@@ -1,0 +1,25 @@
+:root{
+    --color-link:#AB223E;
+}
+a{
+    text-decoration: none;
+    position: relative;
+    color: var(--color-link);
+}
+a::after{
+    content: '';
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background-color: var(--color-link);
+    transform-origin: left;
+    transform: scale(0);
+    transition:transform .25s linear;
+
+}
+
+a:hover::after, a:focus::after{
+    transform: scale(1);
+}
