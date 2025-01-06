@@ -1,0 +1,40 @@
+
+:root {
+    --sprite-width:calc(860px/ 3);
+}
+ul{ 
+   list-style: none;
+   display: flex;
+   gap:2rem;
+}
+li{
+ display: inline-block;
+ background-color: #F7F7F7;
+ border:3px solid #8d8d8d ;
+ border-radius:10px;
+ padding:1rem;
+ text-align: center;
+ font-weight: 700;
+ font-size: 50px;
+}
+
+.icon{
+    display: block;
+    background-image: url(images/0-sprite.png);
+    background-size: cover;
+    background-repeat: none;
+    width: var(--sprite-width);
+    height: 375px;
+    margin: 1rem 0 ;
+}
+
+
+.i-html {
+    background-position: calc(var(--sprite-width) * 0) 0px;
+}
+.i-js {
+    background-position: calc(var(--sprite-width) * 1) 0px;
+}
+.i-css {
+    background-position: calc(var(--sprite-width) * 2) 0px;
+}
