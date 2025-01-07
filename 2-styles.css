@@ -1,0 +1,88 @@
+.toggle, .toggle * {
+    box-sizing: border-box;
+}
+
+.toggle {
+    --_width: 170px;
+    --_switch_size: 64px;
+    --_inner-height: 50px;
+    --_switch-inline-offset: -10px;
+    --_text-inline-offset: 20px;
+
+    --_text-size: calc(var(--_switch_size) / 2);
+    --_text-weight: 700;
+
+    --_color-switch: #FFFFFF;
+    --_color-border: #C3C3C3;
+
+    --_color-text-unchecked: #C3C3C3;
+    --_color-background-unchecked: #EBEBEB;
+
+    --_color-text-checked: #FFFFFF;
+    --_color-background-checked: #E1013C;
+
+    --_transition-time: .25s;
+}
+
+.toggle-cb {
+    display: none;
+}
+
+.toggle-label {
+    display: inline-block;
+    position: relative;
+    width: var(--_width);
+    height: var(--_inner-height);
+    background-color: var(--_color-background-unchecked);
+    border: 2px solid var(--_color-border);
+    border-radius: calc(var(--_inner-height) / 2);
+    cursor: pointer;
+    margin: 1rem;
+    transition: background-color var(--_transition-time) linear;
+}
+
+.toggle-label .toggle-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-label .toggle-inner::after {
+    content: 'No';
+    font-weight: var(--_text-weight);
+    font-size: var(--_text-size);
+    color: var(--_color-text-unchecked);
+    transform: translateX(var(--_text-inline-offset));
+    transition: all var(--_transition-time) linear;
+}
+
+.toggle-label .toggle-switch {
+    width: var(--_switch_size);
+    height: var(--_switch_size);
+    background-color: var(--_color-switch);
+    border: 1px solid var(--_color-border);
+    border-radius: calc(var(--_switch_size) / 2);
+    margin-top: calc((var(--_switch_size) - var(--_inner-height)) / 2 * -1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(var(--_switch-inline-offset));
+    transition: transform var(--_transition-time) linear;
+}
+
+.toggle-cb:checked + .toggle-label {
+    background-color: var(--_color-background-checked);
+}
+
+.toggle-cb:checked + .toggle-label .toggle-inner::after {
+    content: 'Yes';
+    color: var(--_color-text-checked);
+    transform: translateX(calc(var(--_text-inline-offset) * -1));
+}
+
+.toggle-cb:checked + .toggle-label .toggle-switch {
+    transform: translateX(calc(var(--_width) - var(--_switch_size) - var(--_switch-inline-offset)));
+}
