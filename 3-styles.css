@@ -1,0 +1,91 @@
+.menu {
+    --_color-background: #C81938;
+    --_color-text: #FFFFFF;
+    --_size: 50px;
+    --_gap: 15px;
+
+    --_hamburger-line-height: 2px;
+
+    --_item-count: 5;
+    --_total-height: calc(var(--_size) * var(--_item-count) + var(--_gap) * max(calc(var(--_item-count) - 1), 0));
+
+    --_animation-length: .25s;
+
+    position: relative;
+    padding-top: 0;
+    height: var(--_size);
+    display: flex;
+    flex-direction: column;
+    gap: var(--_gap);
+    overflow: hidden;
+
+    transition: all var(--_animation-length) linear;
+}
+
+.menu * {
+    box-sizing: border-box;
+}
+
+.menu .menu-open {
+    display: none;
+}
+
+.menu-open-button {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+}
+
+.menu-open-button .menu-line {
+    width: calc(var(--_size) / 2);
+    height: var(--_hamburger-line-height);
+    background-color: var(--_color-text);
+
+    transition: all var(--_animation-length) linear;
+}
+
+.menu-open-button, .menu-item {
+    background-color: var(--_color-background);
+    color: var(--_color-text);
+    width: var(--_size);
+    height: var(--_size);
+    border: 1px solid var(--_color-background);
+    border-radius: calc(var(--_size) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--_animation-length) linear;
+}
+
+.menu-open:not(:checked) ~ .menu-item {
+    height: 0;
+    pointer-events: none;
+    border: none;
+}
+.menu-item:hover, .menu-item:focus {
+    outline: 0;
+    background: var(--_color-text);
+    color: var(--_color-background);
+}
+.menu:has(.menu-open:checked) {
+    padding-top: calc(var(--_size) + var(--_gap));
+    height: var(--_total-height);
+}
+.menu-open:checked + .menu-open-button {
+    gap: 0;
+}
+.menu-open:checked + .menu-open-button .menu-line-1 {
+    translate: 0 calc(var(--_hamburger-line-height) * 1);
+    rotate: 45deg;
+}
+.menu-open:checked + .menu-open-button .menu-line-2 {
+    width: 0;
+}
+
+.menu-open:checked + .menu-open-button .menu-line-3 {
+    translate: 0 calc(var(--_hamburger-line-height) * -1);
+    rotate: -45deg;
+}
